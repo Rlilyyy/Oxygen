@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>Oxygen·轻音乐</title>
+        <link rel="stylesheet" href="../public/stylesheets/font-awesome.min.css" charset="utf-8">
         <style media="screen">
             html {
                 height: 100%;
@@ -13,10 +14,9 @@
             body {
                 height: 100%;
                 font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+                font-size: 1.2rem;
                 position: relative;
                 margin: 0;
-
-                background-color: rgb(48, 187, 158);
             }
 
             .container {
@@ -32,48 +32,297 @@
                 margin-left: -318px;
 
                 border-radius: 20px;
-                box-shadow: 0px 8px 15px -5px rgba(50, 50, 50, 0.8);
+                box-shadow: 0px 22px 20px -10px rgba(42,42,42,0.8);
+                z-index: 1;
             }
 
             .container .preview-container,
-            .container .progress-bar,
+            .container .progress-container,
             .container .controller {
                 width: 100%;
+                z-index: 2;
             }
 
             .container .preview-container {
                 height: 220px;
-                background-color: rgb(201, 252, 206);
+                background: url("../UI/test_preview.jpg") center no-repeat;
+                background-size: 100%;
 
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
+
+                position: relative;
+                overflow: hidden;
             }
 
-            .container .progress-bar {
+            /* 歌词样式 */
+            .preview-container .lyrics {
+                text-align: center;
+            }
+
+            .preview-container .lyrics .lyrics-ul {
+                display: inline-block;
+                margin: 0 auto;
+                padding: 0;
+                list-style-type: none;
+                text-align: center;
+            }
+
+            .lyrics .lyrics-ul li {
+                height: 16px;
+                padding: 6px 0;
+                color: rgb(2, 210, 187);
+            }
+
+            .lyrics .lyrics-ul .current-lyrics {
+                color: rgb(242, 67, 88);
+            }
+            /* 歌词样式END */
+
+            /* 进度条样式 */
+            .container .progress-container {
                 height: 45px;
-                background-color: rgb(46, 166, 162);
+                background-color: rgb(25, 33, 35);
             }
 
+            .container .progress-container .progress-bar,
+            .container .progress-container .progress-start,
+            .container .progress-container .progress-end {
+                float: left;
+                height: 100%;
+                position: relative;
+            }
+
+            .container .progress-container .progress-bar {
+                width: 100%;
+            }
+
+            .container .progress-container .progress-bar .progress-bar-center {
+                margin: 0 60px;
+                padding: 20px 0;
+                height: 100%;
+
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+
+            .progress-bar-center .progress-bar-all,
+            .progress-bar-center .progress-bar-loading,
+            .progress-bar-center .progress-bar-playing {
+                width: 100%;
+                height: 100%;
+
+                border-radius: 10px;
+            }
+
+            /* progress bar test stylesheet */
+            .progress-bar .progress-bar-center .progress-bar-all {
+                background-color: rgb(122, 122, 122);
+            }
+            .progress-bar .progress-bar-center .progress-bar-loading {
+                width: 50%;
+                background-color: rgb(102, 102, 102);
+            }
+            .progress-bar .progress-bar-center .progress-bar-playing {
+                width: 30%;
+                background-color: rgb(2, 210, 187);
+            }
+            /* end */
+
+            .progress-container .progress-start,
+            .progress-container .progress-end {
+                width: 60px;
+                text-align: center;
+                line-height: 45px;
+                color: rgb(2, 210, 187);
+            }
+
+            .container .progress-container .progress-start {
+                margin-left: -100%;
+            }
+
+            .container .progress-container .progress-end {
+                margin-left: -60px;
+            }
+            /* 进度条样式END */
+
+            /* 控制器样式 */
             .container .controller {
                 height: 135px;
-                background-color: rgb(15, 216, 236);
+                background-color: rgb(35, 43, 46);
 
                 border-bottom-left-radius: 20px;
                 border-bottom-right-radius: 20px;
+
+                box-shadow: 0px 0px 10px -5px white inset;
             }
+
+            .container .controller .controller-song-info,
+            .container .controller .controller-bar {
+                width: 100%;
+                height: 50%;
+                text-align: center;
+                line-height: 67.5px;
+                font-weight: bold;
+            }
+
+            .controller-song-info .song-info-name {
+                font-size: 2.3rem;
+                color: rgb(242, 67, 88);
+            }
+            .controller-song-info .song-info-singer {
+                font-size: 1.4rem;
+                text-shadow: 0 1px 1px rgb(62, 62, 62);
+                color: rgb(22, 22, 22);
+            }
+
+            .controller .controller-bar {
+                font-size: 2.3rem;
+            }
+            .controller-bar .icon-pause,
+            .controller-bar .icon-play {
+                margin: 0 55px;
+                color: rgb(2, 210, 187);
+            }
+            .controller-bar .icon-backward {
+                margin-left: 135px;
+                color: rgb(2, 210, 187);
+            }
+            .controller-bar .icon-forward {
+                margin-right: 135px;
+                color: rgb(2, 210, 187);
+            }
+            .controller-bar .icon-volume-off,
+            .controller-bar .icon-volume-down,
+            .controller-bar .icon-volume-up,
+            .controller-bar .icon-random {
+                text-shadow: 0 1px 1px rgb(62, 62, 62);
+                color: rgb(22, 22, 22);
+                position: relative;
+            }
+
+            .icon-volume-off .vol-adjust,
+            .icon-volume-down .vol-adjust,
+            .icon-volume-up .vol-adjust {
+                position: absolute;
+                right: 50%;
+                bottom: 100%;
+
+                width: 30px;
+                height: 120px;
+                margin-right: -15px;
+                padding: 10px 0;
+
+                background-color: rgb(22, 22, 22);
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px -6px white;
+
+                display: none;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+
+            .icon-volume-off:hover .vol-adjust,
+            .icon-volume-down:hover .vol-adjust,
+            .icon-volume-up:hover .vol-adjust,
+            .vol-adjust:hover {
+                display: block;
+            }
+
+            .vol-adjust .vol-adjust-bar {
+                margin: 0 auto;
+                width: 6px;
+                height: 100%;
+                background: rgb(242, 67, 88);
+                border-radius: 5px;
+                position: relative;
+            }
+
+            .vol-adjust-bar .vol-adjust-btn {
+                display: inline-block;
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+
+                width: 12px;
+                height: 12px;
+
+                margin-left: -3px;
+                margin-bottom: -3px;
+
+                border-radius: 50%;
+                background-color: rgb(255, 255, 255);
+            }
+            /* 控制器样式END */
 
         </style>
     </head>
     <body>
         <div class="container">
             <div class="preview-container">
-
+                <div class="lyrics">
+                    <ul class="lyrics-ul">
+                        <li>狼牙月 伊人憔悴</li>
+                        <li>我举杯 饮尽了风雪</li>
+                        <li>是谁打翻前世柜 惹尘埃是非</li>
+                        <li>缘字诀 几番轮回</li>
+                        <li class="current-lyrics">你锁眉 哭红颜唤不回</li>
+                        <li>纵然青史已经成灰 我爱不灭</li>
+                        <li>繁华如三千东流水</li>
+                        <li>你发如雪 凄美了离别</li>
+                        <li>我焚香感动了谁</li>
+                        <li>邀明月 让回忆皎洁</li>
+                        <li>爱在月光下完美</li>
+                    </ul>
+                </div>
             </div>
-            <div class="progress-bar">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-bar-center">
+                        <div class="progress-bar-all">
+                            <div class="progress-bar-loading">
+                                <div class="progress-bar-playing">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-start">
+                    02:30
+                </div>
+                <div class="progress-end">
+                    05:20
+                </div>
 
             </div>
             <div class="controller">
+                <div class="controller-song-info">
+                    <span class="song-info-name">发如雪</span>
+                    <span style="font-size: 2rem;color: rgb(22, 22, 22);">.</span>
+                    <span class="song-info-singer">周杰伦</span>
+                </div>
+                <div class="controller-bar">
+                    <i class="icon-random"></i>
+                    <i class="icon-backward"></i>
 
+                    <i class="icon-pause"></i>
+                    <!-- <i class="icon-play"></i> -->
+
+                    <i class="icon-forward"></i>
+
+                    <!-- <i class="icon-volume-off"></i> -->
+                    <!-- <i class="icon-volume-down"></i> -->
+                    <i class="icon-volume-up">
+                        <div class="vol-adjust">
+                            <div class="vol-adjust-bar">
+                                <i class="vol-adjust-btn"></i>
+                            </div>
+                        </div>
+                    </i>
+                </div>
             </div>
         </div>
     </body>
