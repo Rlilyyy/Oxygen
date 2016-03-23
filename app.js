@@ -31,6 +31,18 @@ app.get("/index", function(req, res) {
     res.render("index");
 })
 
+app.get("/", function(req, res) {
+    res.render("index");
+})
+
+app.get("/doGet", function(req, res) {
+    setTimeout(function() {
+        res.send("halo");
+        res.end();
+    }, 2000);
+
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -62,6 +74,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen("80");
+app.listen("80", function() {
+    console.log("start successful");
+});
 
 module.exports = app;

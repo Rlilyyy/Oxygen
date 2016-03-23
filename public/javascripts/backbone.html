@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .div {
+                background: rgb(68, 7, 168);
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div" id="div">
+
+        </div>
+        <script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+        <script src="Underscore.js"></script>
+        <script src="Backbone.js"></script>
+        <script src="backbone.localStorage.js"></script>
+        <script type="text/javascript">
+            // function $(id) {
+            //     return document.getElementById(id);
+            // }
+
+            var div = document.getElementById("div")
+
+            var Model = Backbone.Model.extend({
+                defaults: {
+                    name: "name",
+                    sex: "male",
+                    obj: {name:"31"},
+                    start: 0,
+                    end: 0
+                },
+                changeColor: function(color) {
+                    div.style.backgroundColor = color;
+                }
+            })
+
+            var model = new Model();
+            var model2 = new Model();
+
+            model.on("change:color", function(model, a) {
+                div.style.backgroundColor = a;
+            })
+
+            // var Event = {};
+            // _.extend(model, Backbone.Events)
+
+
+
+            model.on("halo", function(msg) {
+                console.log(msg);
+            })
+            model2.listenTo(model, "halo", function() {
+                console.log("i accept model's halo event")
+            })
+            model.trigger("halo","nihao")
+            model.set({color: "#fff"})
+
+
+            var Chapter = Backbone.Model.extend({
+              validate: function(attrs, options) {
+                //   console.log(attrs)
+                if (attrs.end < attrs.start) {
+                  return "can't end before it starts";
+                }
+              }
+            });
+
+            var one = new Chapter({
+              title : "Chapter One: The Beginning"
+            });
+
+            one.on("invalid", function(model, error) {
+              alert(model.get("title") + " " + error);
+            });
+
+            // one.set({
+            //   start: 15,
+            //   end:   10
+            // } ,{validate:true});
+            // one.save({
+            //     start: 10,
+            //     end: 15
+            // })
+        </script>
+    </body>
+</html>
