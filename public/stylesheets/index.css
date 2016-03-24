@@ -173,6 +173,11 @@ body {
 .controller .controller-bar {
     font-size: 2.3rem;
 }
+.controller-bar .icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 20px;
+}
 .controller-bar .icon-pause,
 .controller-bar .icon-play {
     margin: 0 55px;
@@ -194,6 +199,13 @@ body {
     color: rgb(22, 22, 22);
     position: relative;
 }
+
+/* 切换图标优先级 */
+#controller-bar .randoming {
+    color: rgb(2, 210, 187);
+}
+
+/* END */
 
 .icon-volume-off .vol-adjust,
 .icon-volume-down .vol-adjust,

@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -22,10 +23,19 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', routes);
 // app.use('/users', users);
+
+app.use("/", function(req, res, next) {
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Cache-Control", "no-store");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", 0);
+    next();
+})
 
 app.get("/index", function(req, res) {
     res.render("index");
@@ -33,14 +43,6 @@ app.get("/index", function(req, res) {
 
 app.get("/", function(req, res) {
     res.render("index");
-})
-
-app.get("/doGet", function(req, res) {
-    setTimeout(function() {
-        res.send("halo");
-        res.end();
-    }, 2000);
-
 })
 
 // catch 404 and forward to error handler

@@ -11,7 +11,7 @@
         <div class="container">
             <div class="preview-container">
                 <div class="lyrics">
-                    <ul class="lyrics-ul">
+                    <ul class="lyrics-ul" id='lyrics-ul'>
                         <li>狼牙月 伊人憔悴</li>
                         <li>我举杯 饮尽了风雪</li>
                         <li>是谁打翻前世柜 惹尘埃是非</li>
@@ -27,46 +27,46 @@
                 </div>
             </div>
             <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-bar-center">
-                        <div class="progress-bar-all">
-                            <div class="progress-bar-loading">
-                                <div class="progress-bar-playing">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-bar-center" id="progress-bar-center">
+                        <div class="progress-bar-all" id="progress-bar-all">
+                            <div class="progress-bar-loading" id="progress-bar-loading">
+                                <div class="progress-bar-playing" id="progress-bar-playing">
 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="progress-start">
+                <div class="progress-start" id="progress-start">
                     02:30
                 </div>
-                <div class="progress-end">
+                <div class="progress-end" id="progress-end">
                     05:20
                 </div>
 
             </div>
             <div class="controller">
-                <div class="controller-song-info">
-                    <span class="song-info-name">发如雪</span>
+                <div class="controller-song-info" id="#controller-song-info">
+                    <span class="song-info-name" id="song-info-name">发如雪</span>
                     <span style="font-size: 2rem;color: rgb(22, 22, 22);">.</span>
-                    <span class="song-info-singer">周杰伦</span>
+                    <span class="song-info-singer" id="song-info-singer">周杰伦</span>
                 </div>
-                <div class="controller-bar">
-                    <i class="icon-random"></i>
-                    <i class="icon-backward"></i>
+                <div class="controller-bar" id="controller-bar">
+                    <i class="icon icon-random" id="random"></i>
+                    <i class="icon icon-backward" id="backward"></i>
 
-                    <i class="icon-pause"></i>
-                    <!-- <i class="icon-play"></i> -->
+                    <i class="icon icon-pause" id="pause"></i>
+                    <!-- <i class="icon-play" id="pause"></i> -->
 
-                    <i class="icon-forward"></i>
+                    <i class="icon icon-forward" id="forward"></i>
 
                     <!-- <i class="icon-volume-off"></i> -->
                     <!-- <i class="icon-volume-down"></i> -->
-                    <i class="icon-volume-up">
-                        <div class="vol-adjust">
+                    <i class="icon icon-volume-up" id="volume-status">
+                        <div class="vol-adjust" id="vol-adjust">
                             <div class="vol-adjust-bar">
-                                <i class="vol-adjust-btn"></i>
+                                <i class="vol-adjust-btn" id="vol-adjust-btn"></i>
                             </div>
                         </div>
                     </i>
@@ -80,28 +80,7 @@
         <script src="./javascripts/Nope.js"></script>
         <script src="./javascripts/index.js"></script>
         <script type="text/javascript">
-            np.ajax({
-                type: "GET",
 
-                url: "/doGet",
-
-                success: function(data) {
-                    console.log(data);
-                    console.log(this.timeout)
-                },
-
-                error: function(status) {
-                    console.log(status);
-                },
-
-                async: true,
-
-                timeout: 1000,
-
-                ontimeout: function() {
-                    console.log("timeout");
-                }
-            })
         </script>
     </body>
 </html>
