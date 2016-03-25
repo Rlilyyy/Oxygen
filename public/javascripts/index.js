@@ -90,8 +90,13 @@
         refreshTime: function() {
             var that = this;
             this.t = setTimeout(function() {
-                var minute = that.model.get("minute");
-                var second = that.model.get("second");
+                // var minute = that.model.get("minute");
+                // var second = that.model.get("second");
+
+                var currentTime = $("#oxygen")[0].duration - $("#oxygen")[0].currentTime;
+                var minute = Math.floor(currentTime/60);
+                var second = Math.ceil((currentTime / 60.0 - minute) * 60);
+
                 if(second === 0 && minute !== 0) {
                     second = 59;
                     --minute;
