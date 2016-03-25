@@ -7,12 +7,12 @@
         <link rel="stylesheet" href="./stylesheets/font-awesome.min.css" charset="utf-8">
         <link rel="stylesheet" href="./stylesheets/index.css" charset="utf-8">
     </head>
-    <body>
-        <div class="container">
-            <div class="preview-container">
+    <body id="body">
+        <div class="container" id="container">
+            <div class="preview-container" id="preview-container">
                 <div class="lyrics">
                     <ul class="lyrics-ul" id='lyrics-ul'>
-                        <li>狼牙月 伊人憔悴</li>
+                        <!-- <li>狼牙月 伊人憔悴</li>
                         <li>我举杯 饮尽了风雪</li>
                         <li>是谁打翻前世柜 惹尘埃是非</li>
                         <li>缘字诀 几番轮回</li>
@@ -22,7 +22,7 @@
                         <li>你发如雪 凄美了离别</li>
                         <li>我焚香感动了谁</li>
                         <li>邀明月 让回忆皎洁</li>
-                        <li>爱在月光下完美</li>
+                        <li>爱在月光下完美</li> -->
                     </ul>
                 </div>
             </div>
@@ -38,26 +38,30 @@
                         </div>
                     </div>
                 </div>
+                <audio src="" id="oxygen">
+                    您的浏览器不支持 audio 标签。
+                </audio>
                 <div class="progress-start" id="progress-start">
-                    02:30
+                    00:00
                 </div>
                 <div class="progress-end" id="progress-end">
-                    05:20
+                    00:00
                 </div>
 
             </div>
             <div class="controller">
                 <div class="controller-song-info" id="#controller-song-info">
-                    <span class="song-info-name" id="song-info-name">发如雪</span>
+                    <span class="song-info-name" id="song-info-name"></span>
                     <span style="font-size: 2rem;color: rgb(22, 22, 22);">.</span>
-                    <span class="song-info-singer" id="song-info-singer">周杰伦</span>
+                    <span class="song-info-singer" id="song-info-singer"></span>
                 </div>
+
                 <div class="controller-bar" id="controller-bar">
                     <i class="icon icon-random" id="random"></i>
                     <i class="icon icon-backward" id="backward"></i>
 
-                    <i class="icon icon-pause" id="pause"></i>
-                    <!-- <i class="icon-play" id="pause"></i> -->
+                    <!-- <i class="icon icon-pause" id="pause"></i> -->
+                    <i class="icon icon-play" id="pause"></i>
 
                     <i class="icon icon-forward" id="forward"></i>
 
@@ -65,7 +69,7 @@
                     <!-- <i class="icon-volume-down"></i> -->
                     <i class="icon icon-volume-up" id="volume-status">
                         <div class="vol-adjust" id="vol-adjust">
-                            <div class="vol-adjust-bar">
+                            <div class="vol-adjust-bar" id="vol-adjust-bar">
                                 <i class="vol-adjust-btn" id="vol-adjust-btn"></i>
                             </div>
                         </div>

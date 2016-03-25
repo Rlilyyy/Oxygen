@@ -9,6 +9,11 @@ body {
     font-size: 1.2rem;
     position: relative;
     margin: 0;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
 }
 
 .container {
@@ -38,8 +43,10 @@ body {
 
 .container .preview-container {
     height: 220px;
-    background: url("../UI/test_preview.jpg") center no-repeat;
-    background-size: 100%;
+    /*background: url("../UI/test_preview.jpg");*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -107,6 +114,12 @@ body {
     height: 100%;
 
     border-radius: 10px;
+
+    transition: width 1s linear;
+    -o-transition: width 1s linear;
+    -ms-transition: width 1s linear;
+    -moz-transition: width 1s linear;
+    -webkit-transition: width 1s linear;
 }
 
 /* progress bar test stylesheet */
@@ -118,7 +131,7 @@ body {
     background-color: rgb(102, 102, 102);
 }
 .progress-bar .progress-bar-center .progress-bar-playing {
-    width: 30%;
+    width: 0;
     background-color: rgb(2, 210, 187);
 }
 /* end */
@@ -248,7 +261,7 @@ body {
 .vol-adjust-bar .vol-adjust-btn {
     display: inline-block;
     position: absolute;
-    bottom: 20px;
+    bottom: 97px;
     left: 0;
 
     width: 12px;
