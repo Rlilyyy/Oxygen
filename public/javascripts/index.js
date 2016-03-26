@@ -1,5 +1,5 @@
 ;$(function() {
-
+    var version = "0.0.9";
     var Song = Backbone.Model.extend({
 
         defaults: function() {

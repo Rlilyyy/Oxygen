@@ -67,7 +67,7 @@ router.post("/insert", function(req, res) {
             res.end();
         }
     })
-})
+});
 
 
 router.get("/", function(req, res) {
@@ -75,18 +75,13 @@ router.get("/", function(req, res) {
         res.send(JSON.stringify(songs));
         res.end();
     });
-})
-
-// router.param("id", function(req, res, next, id) {
-//     console.log(id);
-//     next();
-// })
+});
 
 router.get("/:id", function(req, res) {
 
     res.send(req.params.id)
     // res.sendStatus(200);
     res.end();
-})
+});
 
 module.exports = router;
