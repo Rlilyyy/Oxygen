@@ -66,7 +66,6 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
-                    console.log(that.model.get("title"))
                     var lyricsArr = data.split("\n");
                     var len = lyricsArr.length;
                     var reg = /[^\[](\S*)/g;

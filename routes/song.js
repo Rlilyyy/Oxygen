@@ -45,7 +45,6 @@ db.once('open',function(){
 
 router.post("/insert", function(req, res) {
     var body = req.body;
-    console.log(body.singer, body.title, body.url, body.lyrics, body.image)
     if(!body.singer || !body.title || !body.url || !body.lyrics || !body.image) {
         res.sendStatus(200);
         res.end();
