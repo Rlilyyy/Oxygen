@@ -120,6 +120,7 @@ body {
     height: 100%;
 
     border-radius: 10px;
+    cursor: pointer;
 
     transition: width 1s linear;
     -o-transition: width 1s linear;

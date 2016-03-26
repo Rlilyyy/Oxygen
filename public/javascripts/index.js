@@ -417,8 +417,6 @@
         controllerView.forward();
         index = 0;
         $("#lyrics-ul").css("transform","translateY(" + -28*index + "px)");
-        $("#lyrics-ul li")[3+index].className = "";
-        $("#lyrics-ul li")[4+index].className = "current-lyrics";
     }, false);
 
     var index = 0;
