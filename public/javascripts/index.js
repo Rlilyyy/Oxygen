@@ -66,6 +66,7 @@
                 url: url,
                 type: "GET",
                 success: function(data) {
+                    console.log(that.model.get("title"))
                     var lyricsArr = data.split("\n");
                     var len = lyricsArr.length;
                     var reg = /[^\[](\S*)/g;
@@ -80,10 +81,15 @@
                     for(var i=0;i<len;i++) {
                         var str = lyricsArr[i].split("]")
                         var lyrics = str[1];
-                        var time = str[0].match(reg)[0];
+                        var time = str[0].match(reg);
 
-                        if(!filterReg.test(time)) {
+                        if(!!time) {
+                            time = time[0];
+                        }else {
+                            time = "0"
+                        }
 
+                        if(!filterReg.test(time) && time != "0") {
                             var timeArr = time.split(":");
                             var min = parseInt(timeArr[0]);
                             var sec = parseInt(timeArr[1].split(".")[0]);
@@ -99,9 +105,7 @@
                             that.lyricsArr[idx++] = min * 60 + sec;
 
                         }
-                        // console.log(matchStr, str[1])
                     }
-                    console.log(that.lyricsArr)
                 },
                 error: function() {
                     console.log("error");
@@ -411,20 +415,24 @@
         controllerView.pause();
         if(this.loop)   return;
         controllerView.forward();
+        index = 0;
+        $("#lyrics-ul").css("transform","translateY(" + -28*index + "px)");
+        $("#lyrics-ul li")[3+index].className = "";
+        $("#lyrics-ul li")[4+index].className = "current-lyrics";
     }, false);
 
     var index = 0;
 
     // 歌词同步
     $("#oxygen")[0].addEventListener("timeupdate", function() {
-        while(!!controllerView.lyricsView.lyricsArr[index+1] && this.currentTime > controllerView.lyricsView.lyricsArr[index]) {
+        while(!!$("#lyrics-ul li")[5+index] && this.currentTime > controllerView.lyricsView.lyricsArr[index]) {
             $("#lyrics-ul").css("transform","translateY(" + -28*index + "px)");
             $("#lyrics-ul li")[3+index].className = ""
             $("#lyrics-ul li")[4+index].className = "current-lyrics"
             index++
         }
 
-        while(!!controllerView.lyricsView.lyricsArr[index] && this.currentTime < controllerView.lyricsView.lyricsArr[index-1]) {
+        while(!!$("#lyrics-ul li")[4+index] && this.currentTime < controllerView.lyricsView.lyricsArr[index-1]) {
             $("#lyrics-ul li")[4+index].className = ""
             index--;
             $("#lyrics-ul li")[4+index].className = "current-lyrics"
