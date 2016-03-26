@@ -66,6 +66,12 @@ body {
     padding: 0;
     list-style-type: none;
     text-align: center;
+
+    transition: transform 1s ease;
+    -o-transition: transform 1s ease;
+    -ms-transition: transform 1s ease;
+    -moz-transition: transform 1s ease;
+    -webkit-transition: transform 1s ease;
 }
 
 .lyrics .lyrics-ul li {
@@ -127,7 +133,7 @@ body {
     background-color: rgb(122, 122, 122);
 }
 .progress-bar .progress-bar-center .progress-bar-loading {
-    width: 50%;
+    width: 0;
     background-color: rgb(102, 102, 102);
 }
 .progress-bar .progress-bar-center .progress-bar-playing {
