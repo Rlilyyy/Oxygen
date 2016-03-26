@@ -138,13 +138,17 @@
         },
 
         renderTime: function() {
-            $("#progress-start").html(this.model.get("minute") + ":" + this.model.get("second"));
+            var minute = this.model.get("minute");
+            var second = this.model.get("second");
+            $("#progress-start").html((minute<10?"0"+minute:minute) + ":" + (second<10?"0"+second:second));
             this.renderPlayingTime();
             // this.refreshTime();
         },
 
         renderPlayingTime: function() {
-            $("#progress-end").html(this.model.get("minute") + ":" + this.model.get("second"));
+            var minute = this.model.get("minute");
+            var second = this.model.get("second");
+            $("#progress-end").html((minute<10?"0"+minute:minute) + ":" + (second<10?"0"+second:second));
         },
 
         refreshTime: function() {
@@ -382,6 +386,20 @@
                 (bottom <=0 ? bottom = 0 : bottom = bottom);
             this.volCursor.css("bottom", bottom-3 + "px");
             this.audio.volume = bottom / 100.0;
+
+            if(this.audio.volume > 0 && this.audio.volume*100 <= 50) {
+                this.volIcon.addClass("icon-volume-down");
+                this.volIcon.removeClass("icon-volume-up");
+                this.volIcon.removeClass("icon-volume-off");
+            }else if(this.audio.volume*100 > 50) {
+                this.volIcon.addClass("icon-volume-up");
+                this.volIcon.removeClass("icon-volume-down");
+                this.volIcon.removeClass("icon-volume-off");
+            }else if(this.audio.volume === 0) {
+                this.volIcon.addClass("icon-volume-off");
+                this.volIcon.removeClass("icon-volume-down");
+                this.volIcon.removeClass("icon-volume-up");
+            }
         },
 
         stopPropagation: function(e) {
