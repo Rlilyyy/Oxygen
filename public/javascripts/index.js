@@ -56,6 +56,8 @@
             this.ul.html("");
             this.$el.css("background", "url('" + this.model.get("image") + "') center no-repeat");
             this.$el.css("backgroundSize", "100%");
+            $("#blur").css("background", "url('" + this.model.get("image") + "') center no-repeat");
+            $("#blur").css("backgroundSize", "100%");
 
             if(url.length <= 0)
                 return;

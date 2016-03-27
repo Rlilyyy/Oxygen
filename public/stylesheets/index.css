@@ -55,6 +55,21 @@ body {
     overflow: hidden;
 }
 
+.container .preview-container .blur {
+    position: absolute;
+    width: 110%;
+    height: 115%;
+    margin-top: -2%;
+    margin-left: -5%;
+    z-index: -1;
+    background: none;
+
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+            filter: blur(10px);
+}
+
 /* 歌词样式 */
 .preview-container .lyrics {
     text-align: center;
@@ -122,11 +137,11 @@ body {
     border-radius: 10px;
     cursor: pointer;
 
-    transition: width 1s linear;
-    -o-transition: width 1s linear;
-    -ms-transition: width 1s linear;
-    -moz-transition: width 1s linear;
-    -webkit-transition: width 1s linear;
+    transition: width .3s linear;
+    -o-transition: width .3s linear;
+    -ms-transition: width .3s linear;
+    -moz-transition: width .3s linear;
+    -webkit-transition: width .3s linear;
 }
 
 /* progress bar test stylesheet */
