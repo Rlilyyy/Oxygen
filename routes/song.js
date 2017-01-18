@@ -2,7 +2,12 @@ var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/oxygen');
+var options = {
+    user: "oxygenAdmin",
+    pass: "8605358aa"
+};
+
+mongoose.connect('mongodb://localhost/oxygen', options);
 
 var db = mongoose.connection;
 
